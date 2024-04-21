@@ -1,0 +1,9 @@
+<form action="/upload_file" method="post" enctype="multipart/form-data">
+    Patient ID: <input type="text" name="patient_id"><br>
+    File: <input type="file" name="file"><br>
+    File Type: <select name="file_type">
+        <option value="xray">X-ray</option>
+        <option value="report">Medical Report</option>
+    </select><br>
+    <input type="submit" value="Upload File">
+</form>

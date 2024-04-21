@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ patient.name }} - Patient Details</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{{ url_for('home') }}">Dashboard</a>
+            <span>{{ current_user.name }}</span>
+            <a href="{{ url_for('logout') }}" class="logout-button">Logout</a>
+        </nav>
+    </header>
+    <div class="dashboard">
+        <section class="content">
+            <h1>Patient Details: {{ patient.name }}</h1>
+            <p><strong>Email:</strong> {{ patient.email }}</p>
+            <h2>Tickets</h2>
+            {% if tickets %}
+                <ul>
+                {% for ticket in tickets %}
+                    <li>{{ ticket.title }} - {{ ticket.status }}</li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>No tickets found for this patient.</p>
+            {% endif %}
+            <!-- Additional patient interactions could be added here -->
+        </section>
+    </div>
+</body>
+</html>

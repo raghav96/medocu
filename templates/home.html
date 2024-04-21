@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <img src="{{ url_for('static', filename='images/logo.jpeg') }}" alt="Logo" class="logo">
+            <span>{{ current_user.name }}</span>
+            <div class="dropdown">
+                <button class="dropbtn">Actions</button>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('new_patient') }}">New Patient</a>
+                    <!-- Additional menu items can be added here -->
+                </div>
+            </div>
+            <a href="{{ url_for('logout') }}" class="logout-button">Logout</a>
+        </nav>
+    </header>
+    <div class="dashboard">
+        <aside>
+            <ul>
+                {% for patient in patients %}
+                <li><a href="{{ url_for('patient_detail', patient_id=patient.id) }}">{{ patient.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </aside>
+        <section class="content">
+            <h1>Welcome to Your Dashboard</h1>
+            <!-- Content updates dynamically based on selected patient -->
+        </section>
+    </div>
+</body>
+</html>
