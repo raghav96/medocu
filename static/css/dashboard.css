@@ -15,7 +15,6 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
 }
 
 header nav {
@@ -84,17 +83,28 @@ nav .logout-button:hover {
 
 .dashboard {
     display: flex;
-    flex-grow: 1;
+    flex-grow: 1;  /* This makes sure the dashboard grows to fill the container */
     width: 100%;
+    height: calc(100vh - 42px); /* Adjust the height calculation based on your header's height */
+    overflow: hidden; /* Adds scrolling within the dashboard itself if needed */
 }
 
 aside {
     width: 250px;
     background: #fff;
     padding: 20px;
-    overflow-y: auto;
+    overflow-y: auto; /* Allows scrolling inside the sidebar */
     border-right: 2px solid #ccc;
+    height: 100%;
 }
+
+.content {
+    flex-grow: 1;  /* Allows content to take up any remaining space */
+    padding: 20px;
+    background-color: #fff;
+    overflow-y: auto; /* Allows scrolling within the content area if content exceeds the viewport height */
+}
+
 
 aside ul {
     list-style: none;
@@ -112,13 +122,6 @@ aside ul li a {
 
 aside ul li a:hover {
     background-color: #eee;
-}
-
-section.content {
-    flex-grow: 1;
-    padding: 20px;
-    background-color: #fff;
-    overflow-y: auto;
 }
 
 header nav .logo {
